@@ -1,0 +1,226 @@
+[
+    {
+        "id":1,
+        "name":"ASOS DESIGN ultimate midi tea dress with collar in black",
+        "cat":1,
+        "size":[1,2,3,4],
+        "price":{
+            "old":"",
+            "new":"28.99"
+        },
+        "image":{
+            "img":"dress1-black.jpg",
+            "alt":"ASOS DESIGN ultimate midi tea dress with collar in black"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":2,
+        "name":"ASOS DESIGN ruched racer front neck midi dress in black",
+        "cat":1,
+        "size":[2,3,5],
+        "price":{
+            "old":"24.99",
+            "new":"20.99"
+        },
+        "image":{
+            "img":"dress2-black.jpg",
+            "alt":"ASOS DESIGN ruched racer front neck midi dress in black"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":3,
+        "name":"ASOS DESIGN batwing sleeve mini dress in satin with wrap waist in black",
+        "cat":1,
+        "size":[1,2,3,4,5],
+        "price":{
+            "old":"",
+            "new":"55.99"
+        },
+        "image":{
+            "img":"dress3-black.jpg",
+            "alt":"ASOS DESIGN batwing sleeve mini dress in satin with wrap waist in black"
+        },
+        "available":true,
+        "new":true
+    },
+    {
+        "id":4,
+        "name":"ASOS DESIGN nipped in waist mini dress in black",
+        "cat":1,
+        "size":[4,5],
+        "price":{
+            "old":"34.99",
+            "new":"29.99"
+        },
+        "image":{
+            "img":"dress4-black.jpg",
+            "alt":"ASOS DESIGN nipped in waist mini dress in black"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":5,
+        "name":"ASOS DESIGN pleated cami midi dress with drawstring waist in emerald green",
+        "cat":1,
+        "size":[2,4],
+        "price":{
+            "old":"40.99",
+            "new":"36.70"
+        },
+        "image":{
+            "img":"dress5-emeraldgreen.jpg",
+            "alt":"ASOS DESIGN pleated cami midi dress with drawstring waist in emerald green"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":6,
+        "name":"River Island tie front midi dress in pink",
+        "cat":1,
+        "size":[1,2,3,5],
+        "price":{
+            "old":"",
+            "new":"76.99"
+        },
+        "image":{
+            "img":"dress6-pinkmedium.jpg",
+            "alt":"River Island tie front midi dress in pink"
+        },
+        "available":true,
+        "new":true
+    },
+    {
+        "id":7,
+        "name":"ASOS DESIGN drape detail midi dress with cut out detail",
+        "cat":1,
+        "size":[1,2,3,4,5],
+        "price":{
+            "old":"",
+            "new":"56.99"
+        },
+        "image":{
+            "img":"dress7-brightgreen.jpg",
+            "alt":"ASOS DESIGN drape detail midi dress with cut out detail"
+        },
+        "available":true,
+        "new":true
+    },
+    {
+        "id":8,
+        "name":"ASOS DESIGN mini smock dress with godets and flared sleeves in swirl print",
+        "cat":1,
+        "size":[2,3,5],
+        "price":{
+            "old":"48.99",
+            "new":"43.99"
+        },
+        "image":{
+            "img":"dress8-swirlprint.jpg",
+            "alt":"ASOS DESIGN mini smock dress with godets and flared sleeves in swirl print"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":9,
+        "name":"ASOS DESIGN long sleeve blouse with pocket detail in ivory",
+        "cat":2,
+        "size":[1,2,3,4,5],
+        "price":{
+            "old":"",
+            "new":"31.99"
+        },
+        "image":{
+            "img":"shirt1.jpg",
+            "alt":"ASOS DESIGN long sleeve blouse with pocket detail in ivory"
+        },
+        "available":true,
+        "new":true
+    },
+    {
+        "id":10,
+        "name":"ASOS DESIGN natural crinkle top with side ties in sage",
+        "cat":2,
+        "size":[2,5],
+        "price":{
+            "old":"31.99",
+            "new":"21.99"
+        },
+        "image":{
+            "img":"shirt2.jpg",
+            "alt":"ASOS DESIGN natural crinkle top with side ties in sage"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":11,
+        "name":"Urban Revivo shirt in pink",
+        "cat":2,
+        "size":[1,2,4,5],
+        "price":{
+            "old":"",
+            "new":"39.95"
+        },
+        "image":{
+            "img":"shirt3.jpg",
+            "alt":"Urban Revivo shirt in pink"
+        },
+        "available":true,
+        "new":true
+    },
+    {
+        "id":12,
+        "name":"Pimkie poplin shirt in blue pinstripe",
+        "cat":2,
+        "size":[1,5],
+        "price":{
+            "old":"24.99",
+            "new":"19.99"
+        },
+        "image":{
+            "img":"shirt4.jpg",
+            "alt":"Pimkie poplin shirt in blue pinstripe"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":13,
+        "name":"River Island Maternity floral wrap blouse in black",
+        "cat":2,
+        "size":[1,3,5],
+        "price":{
+            "old":"30.99",
+            "new":"27.99"
+        },
+        "image":{
+            "img":"shirt6.jpg",
+            "alt":"ASOS DESIGN textured frill"
+        },
+        "available":true,
+        "new":false
+    },
+    {
+        "id":14,
+        "name":"ASOS DESIGN textured frill sleeve tee in orange",
+        "cat":2,
+        "size":[1,2,5],
+        "price":{
+            "old":"36.99",
+            "new":"30.99"
+        },
+        "image":{
+            "img":"shirt5.jpg",
+            "alt":"ASOS DESIGN textured frill sleeve tee in orange"
+        },
+        "available":true,
+        "new":false
+    }
+]

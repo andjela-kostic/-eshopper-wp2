@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name":"Dresses",
+        "cover":"dress-cover1.jpg"
+    },
+    {
+        "id":2,
+        "name":"Shirts",
+        "cover":"shirt-cover1.jpg"
+    },
+    {
+        "id":3,
+        "name":"Jeans",
+        "cover":"jeans-cover1.jpg"
+    },
+    {
+        "id":4,
+        "name":"Swimwear",
+        "cover":"swimsuit-cover1.jpg"
+    },
+    {
+        "id":5,
+        "name":"Sportwear",
+        "cover":"sportwear-cover1.jpg"
+    },
+    {
+        "id":6,
+        "name":"Blazers",
+        "cover":"blazer-cover1.jpg"
+    }
+]

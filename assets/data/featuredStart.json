@@ -1,0 +1,22 @@
+[
+    {
+        "id":1,
+        "text":"Quality Product",
+        "ico":"fa fa-check"
+    },
+    {
+        "id":2,
+        "text":"Free Shipping",
+        "ico":"fa fa-shipping-fast"
+    },
+    {
+        "id":3,
+        "text":"14-Day Return",
+        "ico":"fas fa-exchange-alt"
+    },
+    {
+        "id":4,
+        "text":"24/7 Support",
+        "ico":"fa fa-phone-volume"
+    }
+]

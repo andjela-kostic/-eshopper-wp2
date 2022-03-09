@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "href":"https://www.facebook.com/",
+        "name":"facebook",
+        "ico":"fab fa-facebook-f"
+    },
+    {
+        "id":2,
+        "href":"https://twitter.com/",
+        "name":"twiter",
+        "ico":"fab fa-twitter"
+    },
+    {
+        "id":3,
+        "href":"https://www.linkedin.com/",
+        "name":"linkedin",
+        "ico":"fab fa-linkedin-in"
+    },
+    {
+        "id":4,
+        "href":"https://www.instagram.com/",
+        "name":"instagram",
+        "ico":"fab fa-instagram"
+    },
+    {
+        "id":5,
+        "href":"https://www.youtube.com/",
+        "name":"youtube",
+        "ico":"fab fa-youtube"
+    }
+]
