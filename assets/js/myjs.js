@@ -4,7 +4,7 @@ var dataCategories=[];
 var allSizes=[]
 function getData(url,callback){
     $.ajax({
-        url:"../eshopper-1.0.0/assets/data/"+url,
+        url:"https://andjela-kostic.github.io/-eshopper-wp2/assets/data/"+url,
         method: "get",
         dataType: "json",
         success: function(response){
