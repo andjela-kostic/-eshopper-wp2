@@ -1,5 +1,4 @@
 
-var dataProducts=[];
 var dataCategories=[];
 var allSizes=[]
 function getData(url,callback){
@@ -37,8 +36,8 @@ function printCategories(data){
     });
     $('.navCatMenu').each(function(){
         $(this).html(html)
-    })   
-    dataCategories=data;
+    })
+    localStorage.setItem("cat",JSON.stringify(data))
 }
 
 var id;
@@ -110,7 +109,13 @@ function printProducts(data, id="#products"){
         </div>
     </div>`
     });
-    $(id).html(html);
+    if(data.length){
+        $(id).html(html);
+    }
+    else{
+        $(id).html("<p class='col-8 mx-auto py-5'>We currently do not have products for the specified conditions</p>")
+    }
+ 
 }
 
 function printProductsShop(data){
@@ -120,7 +125,6 @@ function printProductsShop(data){
     data=filterSize(data)
     data=sort(data)
     printProducts(data)
-    dataProducts=data;
 }
 
 function filterCategory(data){      
@@ -160,8 +164,8 @@ function printCoverCat(data){
     data.forEach(d => {
         html+=`<div class="col-lg-4 col-md-6 pb-1">
         <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-            <p class="text-right">Vrati broj proizvoda</p>
-            <a href="" class="cat-img position-relative overflow-hidden mb-3">
+            <p class="text-right">A total of ${returnNumberProducts(d.id)} products</p>
+            <a href="shop.html" id="${d.id}" class="cat-img position-relative overflow-hidden mb-3" onclick="getCatId(this.id)">
                 <img class="img-fluid" src="assets/img/${d.cover}" alt="">
             </a>
             <h5 class="font-weight-semi-bold m-0">${d.name}</h5>
@@ -171,6 +175,11 @@ function printCoverCat(data){
     $('#catCover').html(html)
 }
 
+function returnNumberProducts(id){
+    let cats=JSON.parse(localStorage.getItem("allProducts"))
+    let sameCat= cats.filter(x=>x.cat==id);
+    return sameCat.length
+}
 
 function printSocial(data){
     let html=``;
@@ -322,90 +331,186 @@ $("#addToCart").click(function(){
         }
         localStorage.setItem("cart",JSON.stringify(cart))  
         localStorage.setItem("sizes",JSON.stringify(sizes))     
-        $('.badge').each(function(){
-            $(this).html(cart.length)
-        })
-        $("#added").text("Success added!")
+        productInBasket()
+        $("#added").html("Successfully added!</br><a href='cart.html'>See cart</a>")
         fillBasket()
     }
         
    
 })
+productInBasket()
+function productInBasket(){
+    $('.badge').each(function(){
+        let cart=JSON.parse(localStorage.getItem("cart"))        
+        if(cart)  {
+            $(this).html(cart.length)
+        }
+        else{
+            $(this).html("0")
+        }
+    })
+}
 
-$('.badge').each(function(){
-    let cart=JSON.parse(localStorage.getItem("cart"))
-    if(cart)  $(this).html(cart.length)
- 
-})
 
-//$('#cartDiv').html('<p class="text-center col-12">Your cart is empty.</p>')
-$(document).ready(function(){
-    fillBasket()
-})
+
 function fillBasket(){
     let cart=JSON.parse(localStorage.getItem("cart"))
     let sizes=JSON.parse(localStorage.getItem("sizes"))
     let html=``;
     for(let i=0; i<cart.length;i++){ 
         html+=`<tr id="${cart[i][0].id}">
-        <td class="align-middle"><img src="assets/img/${cart[i][0].image.img}" alt=" ${cart[i][0].image.alt}" style="width: 100px;"> ${cart[i][0].image.alt}</td>
+        <td class="align-left"><img src="assets/img/${cart[i][0].image.img}" alt=" ${cart[i][0].image.alt}" style="width: 100px;"> ${cart[i][0].image.alt}</td>
         <td class="price align-middle">$${cart[i][0].price.new}</td>
         <td class="align-middle">
             <div class="input-group quantity mx-auto" style="width: 100px;">
-                <div class="input-group-btn">
-                    <button class="changeQuantity btn btn-sm btn-primary btn-minus" >
+                <div class="changeQuantity input-group-btn">
+                    <button class="btn btn-sm btn-primary btn-minus" >
                     <i class="fa fa-minus"></i>
                     </button>
                 </div>
                 <input type="text" id="quantity" class="form-control form-control-sm bg-secondary text-center" value="1">
-                <div class="input-group-btn">
-                    <button class="changeQuantity btn btn-sm btn-primary btn-plus">
+                <div class="changeQuantity input-group-btn">
+                    <button class="btn btn-sm btn-primary btn-plus">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
             </div>
         </td>
-        <td class="total align-middle">${cart[i][0].price.new}</td>
-        <td class="align-middle"><button class="remove btn btn-sm btn-primary" onclick="remove(this)"><i class="fa fa-times"></i></button></td>
+        <td class="total align-middle">$${cart[i][0].price.new}</td>
+        <td class="align-middle"><div><button class="remove btn btn-sm btn-primary" onclick="remove(this)"><i class="fa fa-times"></i></button><div></td>
         </tr>`
     }      
 
     $("#cartTable").html(html)
     $(".changeQuantity").click(function(){
-        let currentlyInt=parseInt(($(this).parent().parent().find("input[type=text]")).val())
-        if($(this).hasClass('btn-plus')){
+        let currentlyInt=parseInt(($(this).parent().find("input[type=text]")).val())
+        if($(this).find('.btn').hasClass('btn-plus')){
             let next=currentlyInt+1
-            $(this).parent().parent().find("input[type=text]").val(next)
+            $(this).parent().find("input[type=text]").val(next)
         }
-        else if($(this).hasClass('btn-minus')){
+        else if($(this).find('.btn').hasClass('btn-minus')){
             var next=currentlyInt-1     
-            $(this).parent().parent().find("input[type=text]").val(next)      
+            $(this).parent().find("input[type=text]").val(next)      
             if(next==0){
-                let idOfProduct=$(this).parent().parent().parent().parent().attr('id')
-                let itemsProducs = JSON.parse(localStorage.getItem('cart'));
-                let itemForDelete = itemsProducs.filter(item => item[0].id == parseInt(idOfProduct));
-                let indexItem=itemsProducs.indexOf(itemForDelete[0])
-                let filteredProducts = itemsProducs.filter(item =>(itemsProducs.indexOf(item)) != indexItem);               
-                localStorage.setItem('cart', JSON.stringify(filteredProducts));
-                $(this).parent().parent().parent().parent().remove()
+                remove(this)
             }
         }
-        let currently=parseInt(($(this).parent().parent().find("input[type=text]")).val())
-        let findPrice=$(this).parent().parent().parent().parent().find('.price').text()
+        let currently=parseInt(($(this).parent().find("input[type=text]")).val())
+        let findPrice=$(this).parent().parent().parent().find('.price').text()
         let price=parseFloat(findPrice.substr(1))
         let total=price*currently
-        $(this).parent().parent().parent().parent().find('.total').text("$"+total)
+        $(this).parent().parent().parent().find('.total').text("$"+total)
+        cartSumary()
+        productInBasket()
     })
+ 
 }
 
 
-function remove(el){
-  
-    let idOfProduct= $(el).parent().parent().attr('id')
+function remove(el){ 
+    let idOfProduct= $(el).parent().parent().parent().attr('id')
     let itemsProducs = JSON.parse(localStorage.getItem('cart'));
     let itemForDelete = itemsProducs.filter(item => item[0].id == parseInt(idOfProduct));
     let indexItem=itemsProducs.indexOf(itemForDelete[0])
     let filteredProducts = itemsProducs.filter(item =>(itemsProducs.indexOf(item)) != indexItem);               
     localStorage.setItem('cart', JSON.stringify(filteredProducts));
-    $(el).parent().parent().remove()
+    $(el).parent().parent().parent().fadeOut(300, function(){ $(this).remove();});
+    console.log(JSON.parse(localStorage.getItem('cart')).length)
+    console.log(JSON.parse(localStorage.getItem('cart')))
+    if(!JSON.parse(localStorage.getItem('cart')).length){
+        $('#cartDiv').html('<p class="text-center col-12">Your cart is empty.</p>')
+        localStorage.removeItem("cart")
+    }
 }
+
+
+
+function cartSumary(){
+    var count=0;
+    $("#cartTable tr").each( function() {
+        var text = $('.total',this).text();
+        var crop=parseFloat(text.substr(1))
+        count+=crop
+    })
+    $("#subtotal").html(count.toFixed(2))
+    $("#total").html(count.toFixed(2))
+}
+
+$(document).ready(function(){
+    
+    if(JSON.parse(localStorage.getItem("cart"))!=null){
+        fillBasket()
+        cartSumary()
+    }
+    else if(JSON.parse(localStorage.getItem("cart"))){
+        localStorage.removeItem("cart")
+        $('#cartDiv').html('<p class="text-center col-12">Your cart is empty.</p>')
+    }
+    else{
+        $('#cartDiv').html('<p class="text-center col-12">Your cart is empty.</p>')
+    }
+
+    $("#checkoutForm").hide()
+    $("#checkout").click(function(){
+        $("#checkoutForm").show('slow')
+    })
+})
+
+
+$("#order").click(function(){
+
+    let universalReg=/^([A-Z][a-z]+([ ]?[a-z]?["-]?[A-Z][a-z]+)*)$/;
+    let regEmail=/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/;
+    let regPhone=/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+    let regAddress=/[A-Za-z0-9'\.\-\s\,]{2,20}/;
+    let regZip=/^([0-9]+)$/
+
+    let errors=0;
+
+    check("#firstname",universalReg)
+    check("#lastname",universalReg)
+    check("#email",regEmail)
+    check("#address",regAddress)
+    check("#phone",regPhone)
+    check("#city",universalReg)
+    check("#state",universalReg)
+    check("#zip",regZip)
+
+    function check(id,regex){
+        let val=$(id).val()
+        if(!val.match(regex)){
+            errors++
+            $(id).addClass('border border-primary')
+           let example=$(id).attr('placeholder');
+           $(id).parent().find('.example').text("Example: "+example);
+        }
+        else{
+            $(id).attr('class','form-control')
+            $(id).parent().find('.example').text('')
+        }
+    }
+
+    if($("#country").val()==null){
+        errors++
+        $("#country").addClass('border border-danger')
+    }
+    else{
+        $("#country").removeClass('border border-danger')
+        console.log("oop")
+    }
+
+    if($('input[name=payment]:checked').val()){
+        $("#please").hide()
+    }
+    else{
+        $("#please").show()
+        errors++
+    }
+
+    if(!errors){
+        $("#successOrder").html("Successfully ordered! you will soon receive an email with payment details. ")
+    }
+    else{
+        $("#successOrder").html("Please fill in the form according to the examples given.")
+    }
+})
