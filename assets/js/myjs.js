@@ -40,7 +40,6 @@ $(document).ready(function(){
     $("#subscribe").click(function(){
         let regEmail=/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/;
         let email=$("#emailSub").val()
-        console.log(email)
         if(email.match(regEmail)){
             $("#result").html("Successfully!")
         }else{
@@ -458,8 +457,6 @@ function remove(el){
     let filteredProducts = itemsProducs.filter(item =>(itemsProducs.indexOf(item)) != indexItem);               
     localStorage.setItem('cart', JSON.stringify(filteredProducts));
     $(el).parent().parent().parent().fadeOut(300, function(){ $(this).remove();});
-    console.log(JSON.parse(localStorage.getItem('cart')).length)
-    console.log(JSON.parse(localStorage.getItem('cart')))
     if(!JSON.parse(localStorage.getItem('cart')).length){
         $('#cartDiv').html('<p class="text-center col-12">Your cart is empty.</p>')
         localStorage.removeItem("cart")
@@ -482,7 +479,7 @@ var universalReg=/^([A-Z][a-z]+([ ]?[a-z]?["-]?[A-Z][a-z]+)*)$/;
 var regEmail=/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/;
 
 
-/////////////////
+//check contact form
 $("#order").click(function(){
 
     let regPhone=/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
@@ -499,7 +496,7 @@ $("#order").click(function(){
     check("#state",universalReg)
     check("#zip",regZip)
 
-    isItEmpty("#country")
+
     if($("#country").val().length){
         errors++
         $("#country").addClass('border border-danger')
@@ -538,20 +535,15 @@ $("#order").click(function(){
         $("#successOrder").html("Please fill in the form according to the examples given.")
     }
 })
-
+//check contact form
 $("#sendMessageButton").click(function(){
-    let errors=0;
-    if(!errors){
-        $("#success").html("Your message was successfully forwarded!")
-    }
-    else{
-        $("#success").html("Please fill in the form according to the examples given.")
-    }
+    var errors=0;
+
     check("#name",universalReg)
     check("#email",regEmail)
     check("#subject",universalReg)
 
-    if($("#messsage").val()==null){
+    if($("#messsage").text()==null){
         errors++
         $("#messsage").addClass('border border-danger')
     }
@@ -572,6 +564,11 @@ $("#sendMessageButton").click(function(){
             $(id).parent().find('.help-block').text('')
         }
     }
-console.log(errors)
+    if(errors==0){
+        $("#success").html("Your message was successfully forwarded!")
+    }
+    else{
+        $("#success").html("Please fill in the form according to the examples given.")
+    }
     
 })
