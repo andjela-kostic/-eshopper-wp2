@@ -1,0 +1,2 @@
+define("events",["$"],(function(n){var r=n({});function t(n,r){return function(t){t.type=n,r.apply(this,arguments)}}function e(n){return n.replace(/\./g,"~")}return{on:function(n,o){var u=t(n,o);return r.on(e(n),u),u},trigger:function(n,t){return r.trigger(e(n),t)},off:function(n){var t=Array.prototype.slice.call(arguments,1);return t.splice(0,0,e(n)),r.off.apply(r,t)},one:function(n,o){var u=t(n,o);return r.one(e(n),u),u}}}));
+//# sourceMappingURL=events.643bf728.js.map

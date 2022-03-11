@@ -1,0 +1,2 @@
+(window.sharedJsonP=window.sharedJsonP||[]).push([["shallowequal|1.1.0|7fa99"],{"1f698":function(r,e){r.exports=function(r,e,t,n){var o=t?t.call(n,r,e):void 0;if(void 0!==o)return!!o;if(r===e)return!0;if("object"!=typeof r||!r||"object"!=typeof e||!e)return!1;var i=Object.keys(r),a=Object.keys(e);if(i.length!==a.length)return!1;for(var f=Object.prototype.hasOwnProperty.bind(e),u=0;u<i.length;u++){var l=i[u];if(!f(l))return!1;var s=r[l],c=e[l];if(!1===(o=t?t.call(n,s,c,l):void 0)||void 0===o&&s!==c)return!1}return!0}}}]);
+//# sourceMappingURL=shallowequal~1.1.0~7fa99.js.map

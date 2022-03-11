@@ -1,0 +1,2 @@
+(window.sharedJsonP=window.sharedJsonP||[]).push([["requires-port|1.0.0|f8b6b"],{e85f9:function(e,r,s){"use strict";e.exports=function(e,r){if(r=r.split(":")[0],!(e=+e))return!1;switch(r){case"http":case"ws":return 80!==e;case"https":case"wss":return 443!==e;case"ftp":return 21!==e;case"gopher":return 70!==e;case"file":return!1}return 0!==e}}}]);
+//# sourceMappingURL=requires-port~1.0.0~f8b6b.js.map

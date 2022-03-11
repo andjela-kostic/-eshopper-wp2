@@ -1,0 +1,2 @@
+(window.sharedJsonP=window.sharedJsonP||[]).push([["asos-web-logging|2.2.95|dfe36"],{b0326:function(n,r,e){"use strict";var o=["error","warn","info","http","verbose","debug","silly"];n.exports=function(){return o.reduce((function(n,r){return n[r]=function(){},n}),{})}}}]);
+//# sourceMappingURL=asos-web-logging~2.2.95~dfe36.js.map
